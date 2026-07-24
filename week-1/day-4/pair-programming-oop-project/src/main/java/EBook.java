@@ -10,11 +10,13 @@ public class EBook extends Book implements Borrowable{
     @Override
     public void borrowItem() {
         // Implementation for borrowing an e-book
+        System.out.println("Item borrowed.");
     }
 
     @Override
     public void returnItem() {
         // Implementation for returning an e-book
+        System.out.println("Item returned.");
     }
 
     /**
