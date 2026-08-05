@@ -2,14 +2,14 @@ package com.school.jdbc.controller;
 
 
 import com.school.jdbc.model.Student;
-import com.school.jdbc.repository.StudentRepository;
+import com.school.jdbc.DAO.StudentDAO;
 import io.javalin.http.Context;
 
 import java.util.List;
 
 public class StudentController {
 
-    private static StudentRepository repo = new StudentRepository();
+    private static StudentDAO repo = new StudentDAO();
 
     // GET /api/students
     public static void getAllStudents(Context ctx) throws Exception {

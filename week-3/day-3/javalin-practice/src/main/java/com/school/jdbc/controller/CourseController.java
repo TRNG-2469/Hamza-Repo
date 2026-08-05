@@ -1,14 +1,14 @@
 package com.school.jdbc.controller;
 
 import com.school.jdbc.model.Course;
-import com.school.jdbc.repository.CourseRepository;
+import com.school.jdbc.DAO.CourseDAO;
 import io.javalin.http.Context;
 
 import java.util.List;
 
 public class CourseController {
 
-    private static CourseRepository repo = new CourseRepository();
+    private static CourseDAO repo = new CourseDAO();
 
     // GET /api/courses
     public static void getAllCourses(Context ctx) throws Exception {

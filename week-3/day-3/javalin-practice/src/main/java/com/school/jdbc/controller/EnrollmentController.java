@@ -1,14 +1,14 @@
 package com.school.jdbc.controller;
 
 import com.school.jdbc.model.Enrollment;
-import com.school.jdbc.repository.EnrollmentRepository;
+import com.school.jdbc.DAO.EnrollmentDAO;
 import io.javalin.http.Context;
 
 import java.util.List;
 
 public class EnrollmentController {
 
-    private static EnrollmentRepository repo = new EnrollmentRepository();
+    private static EnrollmentDAO repo = new EnrollmentDAO();
 
     // GET /api/enrollments
     public static void getAllEnrollments(Context ctx) throws Exception {
