@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Profile & Progress Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="navbar" id="top">
+        <div class="logo">&lt;/&gt; DevProfile</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#progress">Progress</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about" class="card">
+        <h1>Muhammad Hamza Niaz</h1>
+        <p>
+            I'm an aspiring web developer learning to build clean, responsive websites.
+            My goal is to become <strong>confident with HTML and CSS</strong> and eventually
+            move into <em>JavA and full-stack development</em>.
+        </p>
+        <p>
+            I learn best by building real projects, so this dashboard is my first step toward
+            a portfolio I can be proud of.
+        </p>
+    </section>
+
+    <section id="progress" class="card">
+        <h2>My Learning Progress</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Topic</th>
+                    <th>Difficulty</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML Fundamentals</td>
+                    <td>Easy</td>
+                    <td><span class="badge badge-success">Completed</span></td>
+                </tr>
+                <tr>
+                    <td>CSS Styling</td>
+                    <td>Medium</td>
+                    <td><span class="badge badge-progress">In Progress</span></td>
+                </tr>
+                <tr>
+                    <td>Java Basics</td>
+                    <td>Hard</td>
+                    <td><span class="badge badge-pending">Completed</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="contact" class="card">
+        <h2>Get In Touch</h2>
+        <form onsubmit="event.preventDefault(); alert('Message Sent!');">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+            <label for="skill">Skill Level</label>
+            <select id="skill" name="skill">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+            </select>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Write your message here..."></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Jordan Rivera &bull; <a href="#top">Back to top &uarr;</a></p>
+    </footer>
+
+</body>
+</html>
