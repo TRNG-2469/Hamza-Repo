@@ -1,15 +1,20 @@
 package com.rev.sp.boot.sp.model;
 
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+@Entity
+@Table(name = "employees")
 @Data
-@AllArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotBlank(message = "Name cannot be blank.")
     @Size(min = 2, max = 50, message="Name must be a valid size.")
