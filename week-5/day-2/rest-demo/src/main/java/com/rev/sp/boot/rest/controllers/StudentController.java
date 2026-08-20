@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1")
 public class StudentController {
     private final StudentService studentService;
