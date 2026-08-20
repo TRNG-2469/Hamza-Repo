@@ -2,6 +2,7 @@ package com.rev.sp.boot.rest.service;
 
 import com.rev.sp.boot.rest.exceptions.StudentNotFoundException;
 import com.rev.sp.boot.rest.model.Student;
+import com.rev.sp.boot.rest.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,47 +12,40 @@ import java.util.List;
 
 @Service
 public class StudentService {
-    private List<Student> students = new ArrayList<>();
-    public StudentService(){
-        students.add(new Student(1, "John Doe", "john.doe@example.com", "Computer Science"));
-        students.add(new Student(2, "Jane Smith", "jane.smith@example.com", "Mathematics"));
-        students.add(new Student(3, "Alice Johnson", "alice.johnson@example.com", "Physics"));
+
+    private final StudentRepository studentRepository;
+
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
+
     public List<Student> getAllStudents() {
-        return students;
+        return studentRepository.findAll();
     }
     public Student getStudentById(@PathVariable int id) {
-        for (Student student : students) {
-            if (student.getId() == id) {
-                return student;
-            }
-        }
-        throw new StudentNotFoundException(id);
+        return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Student not found with ID: " + id));
     }
     public Student addStudent(@RequestBody Student student) {
-        students.add(student);
-        return student;
+        return studentRepository.save(student);
     }
+
     public Student updateStudent(@PathVariable int id, @RequestBody Student updatedStudent) {
-        for (int i = 0; i < students.size(); i++) {
-            Student student = students.get(i);
-            if (student.getId() == id) {
-                student.setName(updatedStudent.getName());
-                student.setEmail(updatedStudent.getEmail());
-                student.setCourse(updatedStudent.getCourse());
-                return updatedStudent;
-            }
-        }
-        return null;
+        Student existingStudent = studentRepository.findById(id)
+                .orElseThrow(() -> new StudentNotFoundException("Student not found with ID: " + id));
+
+        existingStudent.setName(updatedStudent.getName());
+        existingStudent.setAge(updatedStudent.getAge());
+        existingStudent.setEmail(updatedStudent.getEmail());
+
+        return studentRepository.save(existingStudent);
+
     }
     public String deleteStudent(@PathVariable int id) {
-        for (int i = 0; i < students.size(); i++) {
-            Student student = students.get(i);
-            if (student.getId() == id) {
-                students.remove(i);
-                return "Student with ID " + id + " deleted.";
-            }
-        }
-        return "Student with ID " + id + " not found.";
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new StudentNotFoundException("Student not found with ID: " + id));
+        studentRepository.delete(student);
+        return "Student deleted successfully";
     }
-}
+
+    }
+

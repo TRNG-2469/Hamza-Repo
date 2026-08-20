@@ -2,7 +2,6 @@ package com.rev.sp.boot.rest.controllers;
 
 import com.rev.sp.boot.rest.model.Student;
 import com.rev.sp.boot.rest.service.StudentService;
-import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +24,7 @@ public class StudentController {
     }
 
     @GetMapping("/students/{id}")
-    public ResponseEntity<Student> getStudentById(@Valid @PathVariable int id) {
+    public ResponseEntity<Student> getStudentById(@PathVariable int id) {
         Student student = studentService.getStudentById(id);
         if (student != null) {
             return ResponseEntity.ok(student);
